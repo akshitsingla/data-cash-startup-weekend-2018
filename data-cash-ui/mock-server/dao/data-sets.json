@@ -1,0 +1,16 @@
+[
+	{
+		"title": "Radiology reports of Lukemia patients",
+		"description": "Blah Blah Blah Blah Blah",
+		"price": "1000$",
+		"url": "www.google.com",
+		"tags": ["",""],
+		"provider": "",
+		"reviews": [
+			{
+				"post": "",
+				"reviewer": ""
+			}
+		]
+	}
+]
