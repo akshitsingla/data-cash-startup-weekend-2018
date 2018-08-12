@@ -14,7 +14,7 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Data Cash</a>
+      <a class="navbar-brand" href="#">MediCache</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,7 +57,7 @@
                   
                     <div class="form-group">
                       <label for="exampleFormControlSelect2">Age groups</label>
-                      <input type="range" class="form-control-range" id="formControlRange">
+                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlTextarea1">Symptoms:</label>
@@ -65,16 +65,18 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Geography</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
                     </div>
-                  <button type="button" class="btn btn-primary">Check number of records</button>
+                  <button type="button" class="btn btn-primary" onclick="javascript:searchCriteria()">Check number of records</button>
                 </form>
 
                 <hr/>
-                <div class="alert alert-success" role="alert">
+
+                <div class="alert alert-success" role="alert" id="records-count">
                   232 records available.
                 </div>
-                <div class="alert alert-secondary" role="alert">
+
+                <div class="alert alert-secondary" role="alert" id='request-info-form'>
 
                   <h3>Create Campaign</h3>
                   <form>
@@ -102,63 +104,24 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Incentive per request:</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                      <input type="number" class="form-control" id="incentive-per-request" placeholder="" onchange="javascript:updateTotals()">
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Number of reports:</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                      <input type="number" class="form-control" id="reports-request-count" placeholder="" onchange="javascript:updateTotals()">
                     </div>
+
                       <hr/>
                       <h5>Total Bill</h5>
-                      <b>Incentive Payout: </b> 2000$<br/>
-                      <b>Campaign cost: </b> 100$<br/>
-                      <b>Taxes: </b> 210$<br/>
-                      <u><b>Total: </b> 2310$</u><br/>
+                      <b>Incentive Payout: </b> <span id="incentives-total"></span>$<br/>
+                      <b>Campaign cost: </b> <span id="campaign-cost"></span>$<br/>
+                      <b>Taxes: </b> <span id="taxes"></span>$<br/>
+                      <u><b>Total: </b> <span id="total-campaign-cost"></span>$</u><br/>
+                      <button type="button" class="btn btn-primary">Create campaign</button>
                     </div>
-                  <button type="button" class="btn btn-primary">Create campaign</button>
+                  
                 </form>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Campaign #1 Title
-                </button>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-              <div class="card-body">
-                <h6>Search Criteria:</h6>
-                <ul>
-                  <li><b>Age Groups:</b> 18-25</li>
-                  <li><b>Symptoms:</b> Sneeze, stomach-ache</li>
-                  <li><b>Geography:</b> Massachusetts</li>
-                </ul>
-
-                <h6>Description:</h6>
-                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-
-                <h6>URL: </h6>
-                <p><a href="#">www.google.com</a></p>
-                <h6>Tags: </h6>
-                <p>
-                  <span class="badge badge-warning">Primary</span>
-                  <span class="badge badge-warning">Primary</span>
-                  <span class="badge badge-warning">Primary</span>
-                </p>
-                <h6>Number of reports requested: </h6>
-                <p>200</p>
-                <h6>Incetive per report: </h6>
-                <p>1.5$</p>
-                <h6>Campaign Dates: </h6>
-                <p>1st May'18 - 
-                  <span class="badge badge-success">on-going</span>
-                </p>
-                <button type="button" class="btn btn-primary">Download 198 reports</button>
               </div>
             </div>
           </div>
@@ -171,9 +134,10 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="rsc/jquery-3.3.1.slim.min.js"></script>
+    <script src="rsc/popper.min.js" crossorigin="anonymous"></script>
+    <script src="rsc/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="mock-server/dao/db.js"></script>
   </body>
 </html>

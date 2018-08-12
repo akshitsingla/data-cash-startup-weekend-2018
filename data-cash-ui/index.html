@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="rsc/bootstrap.min.css">
 
-    <title>Data Cache</title>
+    <title>MediCache</title>
   </head>
   <body>
   	<main role="main" class="container" id="patients-view">
@@ -16,14 +16,12 @@
       <!-- Request Form -->
       	<div class="container-fluid page-div">
 		    <div class="jumbotron">
-			  <h1 class="display-4">Welcome to DataCache</h1>
+			  <h1 class="display-4">Welcome to MediCache</h1>
 			  <p class="lead">We aim to bring back the ownership of your own data!</p>
 			  <hr class="my-4">
-			  <form>
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				    <label for="exampleInputEmail1">Username</label>
+				    <input type="text" class="form-control" id="uname" aria-describedby="emailHelp" placeholder="Enter username">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Password</label>
@@ -33,16 +31,17 @@
 				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
 				    <label class="form-check-label" for="exampleCheck1">Keep signed in</label>
 				  </div>
-				  <button type="submit" class="btn btn-primary">Sign In</button>
-				</form>
+				  <button type="submit" class="btn btn-primary" onclick="javascript:signIn()">Sign In</button>
 			</div>
 		</div>
 	</main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="rsc/jquery-3.3.1.slim.min.js"></script>
+    <script src="rsc/popper.min.js" crossorigin="anonymous"></script>
+    <script src="rsc/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="mock-server/dao/db.js"></script>
   </body>
 </html>
